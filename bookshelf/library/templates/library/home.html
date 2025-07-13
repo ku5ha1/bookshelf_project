@@ -1,9 +1,57 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>BookShelf</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #555;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
 <body>
 
-<h1>Hello World!</h1>
-<p>Welcome to the Library Homepage</p>
+<h1>Welcome</h1>
+<p>BookShelf</p>
+
+<nav>
+    <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'book_list' %}">Book List</a></li>
+        <li><a href="{% url 'add_book' %}">Add Book</a></li>
+    </ul>
+</nav>
 
 </body>
 </html>
