@@ -1,6 +1,6 @@
 from django.urls import path 
 from . import views
-from .api_views import BookList, ToggleReadStatus, BookDetail, CategoryView
+from .api_views import BookList, ToggleReadStatus, BookDetail, CategoryView, UserCreate
 
  
 urlpatterns = [
@@ -14,5 +14,6 @@ urlpatterns = [
     path('api/books/<int:pk>', BookDetail.as_view()),
     path('api/books/<int:pk>', ToggleReadStatus.as_view()),
     path('api/categories', CategoryView.as_view()),
-    path('api/categories/<int:pk>', CategoryView.as_view())
+    path('api/categories/<int:pk>', CategoryView.as_view()),
+    path('api/create-user', UserCreate.as_view())
 ]
