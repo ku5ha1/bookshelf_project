@@ -1,6 +1,7 @@
 from django.urls import path 
 from . import views
 from .api_views import BookList, ToggleReadStatus, BookDetail, CategoryView, UserCreate
+from rest_framework.authtoken.views import obtain_auth_token
 
  
 urlpatterns = [
@@ -15,5 +16,6 @@ urlpatterns = [
     path('api/books/<int:pk>', ToggleReadStatus.as_view()),
     path('api/categories', CategoryView.as_view()),
     path('api/categories/<int:pk>', CategoryView.as_view()),
-    path('api/create-user', UserCreate.as_view())
+    path('api/users/create', UserCreate.as_view()),
+    path('api/users/login', obtain_auth_token, name='api_token_auth')
 ]
