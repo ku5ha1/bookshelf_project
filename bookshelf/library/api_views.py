@@ -40,9 +40,24 @@ class BookDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def delete(self, request, pk):
-        book = self.get_object(pk)
+        book = self.get_object(pk=pk)
         book.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class ToggleReadStatus(APIView):
+    def get_object(self, pk):
+        try:
+            return Book.objects.get(pk=pk)
+        except Book.DoesNotExist:
+            raise Http404
+        
+    def put(self, request, pk):
+        book = self.get_object(pk)
+        book.is_read = not book.is_read
+        book.save()
+
+        serializer = BookSerializer(book)
+        return Response(serializer.data)
 
 
 class CategoryView(APIView):
